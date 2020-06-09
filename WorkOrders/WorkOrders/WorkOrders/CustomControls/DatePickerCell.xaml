@@ -1,0 +1,17 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ViewCell xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:d="http://xamarin.com/schemas/2014/forms/design"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+             mc:Ignorable="d"
+             x:Name="This"
+             x:Class="WorkOrders.CustomControls.DatePickerCell">
+    <Grid BindingContext="{x:Reference This}" Padding="13, 0">
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="*"></ColumnDefinition>
+            <ColumnDefinition Width="100"></ColumnDefinition>
+        </Grid.ColumnDefinitions>
+        <Label Text="{Binding LabelText}"  VerticalOptions="Center"></Label>
+        <DatePicker Grid.Column="1" Date="{Binding DateValue}"></DatePicker>
+    </Grid>
+</ViewCell>

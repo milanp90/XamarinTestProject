@@ -1,0 +1,54 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:d="http://xamarin.com/schemas/2014/forms/design"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+             xmlns:customControls="clr-namespace:WorkOrders.CustomControls;assembly=WorkOrders"
+             xmlns:viewModels="clr-namespace:WorkOrders.ViewModels;assembly=WorkOrders"
+             mc:Ignorable="d"
+             x:Class="WorkOrders.Views.WorkOrderDetailsPage">
+    <ContentPage.ToolbarItems>
+        <ToolbarItem Text="Edit Work Order" Command="{Binding EditWorkOrderCommand}" CommandParameter="{Binding WorkOrder}" />
+        <ToolbarItem Text="Cancel Work Order" Command="{Binding CancelWorkOrderCommand}" CommandParameter="{Binding WorkOrder}" Order="Secondary" IsDestructive="True"/>
+    </ContentPage.ToolbarItems>
+    <TableView Intent="Data" x:DataType="viewModels:WorkOrderDetailsViewModel">
+        <TableRoot>
+            <TableSection Title="Work Order" x:Name="WorkOrderSection">
+                <customControls:DetailsCell Text="{Binding WorkOrder.Title}" Label="Title"></customControls:DetailsCell>
+                <customControls:DetailsCell Text="{Binding WorkOrder.Description}" Label="Description"></customControls:DetailsCell>
+                <customControls:DetailsCell Text="{Binding WorkOrder.ShortDescription}" Label="Short Description"></customControls:DetailsCell>
+                <customControls:DetailsCell Text="{Binding OrderStatusText}" Label="Status" TextColor="{Binding OrderStatus, Converter={StaticResource StatusToColorConverter}}"></customControls:DetailsCell>
+                <ViewCell x:Name="SecurityRiskCell">
+                    <Frame BackgroundColor="Red" Style="{StaticResource OuterFrame}">
+                        <Frame Style="{StaticResource InnerFrame}" Padding="0" >
+                            <StackLayout Orientation="Horizontal" Padding="5, 0">
+                                <Image Source="warning.png" HorizontalOptions="Start"></Image>
+                                <Label Text="Security Risks" HorizontalOptions="Start" VerticalOptions="Center"></Label>
+                                <Label Text="{Binding WorkOrder.SecurityRisks}" HorizontalOptions="EndAndExpand" VerticalOptions="Center"></Label>
+                            </StackLayout>
+                        </Frame>
+                    </Frame>
+                </ViewCell>
+            </TableSection>
+            <TableSection Title="Dates">
+                <customControls:DetailsCell Text="{Binding LatestWorkStartDate}" Label="Latest Work Start Date"></customControls:DetailsCell>
+                <customControls:DetailsCell Text="{Binding LatestWorkEndDate}" Label="Latest Work End Date"></customControls:DetailsCell>
+                <customControls:DetailsCell Text="{Binding WorkStartedOnDate}" Label="Work Started On Date"></customControls:DetailsCell>
+                <customControls:DetailsCell Text="{Binding WorkEndedOnDate}" Label="Work Ended On Date"></customControls:DetailsCell>
+            </TableSection>
+            <TableSection Title="Address">
+                <customControls:DetailsCell Text="{Binding WorkOrder.ClientAddress.FullAddress}" Label="Full Address"></customControls:DetailsCell>
+                <ViewCell>
+                    <Button Text="Go to location" Command="{Binding OpenMapCommand}"
+                            CommandParameter="{Binding .}"></Button>
+                </ViewCell>
+            </TableSection>
+            <TableSection Title="Client Information">
+                <customControls:DetailsCell Text="{Binding WorkOrder.ClientInformation.CompanyName}" Label="Company Name"></customControls:DetailsCell>
+                <customControls:DetailsCell Text="{Binding WorkOrder.ClientInformation.Email}" Label="Email"></customControls:DetailsCell>
+                <customControls:DetailsCell Text="{Binding WorkOrder.ClientInformation.PrimaryPhoneNumber}" Label="Primary Phone Number"></customControls:DetailsCell>
+                <customControls:DetailsCell Text="{Binding WorkOrder.ClientInformation.SecondaryPhoneNumber}" Label="Secondary Phone Number"></customControls:DetailsCell>
+            </TableSection>
+        </TableRoot>
+    </TableView>
+</ContentPage>

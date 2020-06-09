@@ -1,0 +1,53 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<Application xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:d="http://xamarin.com/schemas/2014/forms/design"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+             xmlns:converters="clr-namespace:WorkOrders.Converters;assembly=WorkOrders"
+             mc:Ignorable="d"
+             x:Class="WorkOrders.App">
+    <Application.Resources>
+
+        <converters:StatusToColorConverter x:Key="StatusToColorConverter"/>
+
+        <Style x:Key="OuterFrame"
+               TargetType="Frame">
+            <Setter Property="Padding"
+                    Value="0" />
+            <Setter Property="HasShadow"
+                    Value="False" />
+        </Style>
+
+        <Style x:Key="InnerFrame"
+               TargetType="Frame">
+            <Setter Property="Margin"
+                    Value="8" />
+            <Setter Property="CornerRadius"
+                    Value="8" />
+            <Setter Property="HasShadow"
+                    Value="False" />
+        </Style>
+
+        <Style TargetType="Span">
+            <Setter Property="FontSize" Value="24" />
+        </Style>
+
+        <Style TargetType="Image">
+            <Setter Property="HeightRequest" Value="24" />
+            <Setter Property="WidthRequest" Value="24" />
+        </Style>
+
+        <Style TargetType="Label">
+            <Setter Property="FontSize" Value="15" />
+        </Style>
+
+        <Style TargetType="NavigationPage">
+            <Setter Property="BarBackgroundColor" Value="Red"/>
+            <Setter Property="BarTextColor" Value="White"/>
+        </Style>
+
+    </Application.Resources>
+
+
+
+</Application>

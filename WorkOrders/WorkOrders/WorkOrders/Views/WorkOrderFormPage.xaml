@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms" xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:customControls="clr-namespace:WorkOrders.CustomControls;assembly=WorkOrders"
+             xmlns:viewModels="clr-namespace:WorkOrders.ViewModels;assembly=WorkOrders"
+             x:Class="WorkOrders.Views.WorkOrderFormPage">
+    <TableView Intent="Form" x:DataType="viewModels:WorkOrderFormViewModel">
+        <TableRoot>
+            <TableSection Title="Work Order">
+                <EntryCell Label="Title" Text="{Binding WorkOrder.Title}" />
+                <EntryCell Label="Description" Text="{Binding WorkOrder.Description}" />
+                <EntryCell Label="Short Description" Text="{Binding WorkOrder.ShortDescription}" />
+                <EntryCell Label="Security Risk" Text="{Binding WorkOrder.SecurityRisks}" />
+            </TableSection>
+            <TableSection Title="Dates">
+                <customControls:DatePickerCell LabelText="Latest Work Start Date" DateValue="{Binding LatestWorkStartDate}"></customControls:DatePickerCell>
+                <customControls:DatePickerCell LabelText="Latest Work End Date" DateValue="{Binding LatestWorkEndDate}"></customControls:DatePickerCell>
+                <customControls:DatePickerCell LabelText="Work Started On Date"  DateValue="{Binding WorkStartedOnDate}"></customControls:DatePickerCell>
+                <customControls:DatePickerCell LabelText="Work Ended On Date"  DateValue="{Binding WorkEndedOnDate}"></customControls:DatePickerCell>
+            </TableSection>
+            <TableSection Title="Address">
+                <EntryCell Label="Full Address" Text="{Binding WorkOrder.ClientAddress.FullAddress}" />
+            </TableSection>
+            <TableSection Title="Client Information">
+                <EntryCell Label="Company Name" Text="{Binding WorkOrder.ClientInformation.CompanyName}" />
+                <EntryCell Label="Email" Text="{Binding WorkOrder.ClientInformation.Email}" Keyboard="Email"/>
+                <EntryCell Label="Primary Phone Number" Text="{Binding WorkOrder.ClientInformation.PrimaryPhoneNumber}" Keyboard="Numeric" />
+                <EntryCell Label="Secondary Phone Number" Text="{Binding WorkOrder.ClientInformation.SecondaryPhoneNumber}" Keyboard="Numeric" />
+            </TableSection>
+            <TableSection>
+                <ViewCell>
+                    <Button Text="Save" Command="{Binding SaveCommand}"/>
+                </ViewCell>
+            </TableSection>
+        </TableRoot>
+    </TableView>
+</ContentPage>

@@ -1,0 +1,20 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ViewCell xmlns="http://xamarin.com/schemas/2014/forms"
+          xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+          xmlns:d="http://xamarin.com/schemas/2014/forms/design"
+          xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+          mc:Ignorable="d"
+          x:Name="This"
+          x:Class="WorkOrders.CustomControls.DetailsCell">
+    <StackLayout Orientation="Horizontal" BindingContext="{x:Reference This}" Padding="13, 0">
+        <StackLayout.Triggers>
+            <DataTrigger TargetType="StackLayout"
+                         Binding="{Binding TextColor}"
+                         Value="Yellow">
+                <Setter Property="BackgroundColor" Value="LightGray" />
+            </DataTrigger>
+        </StackLayout.Triggers>
+        <Label Text="{Binding Label}" VerticalOptions="Center" TextColor="{Binding TextColor}"></Label>
+        <Label HorizontalOptions="EndAndExpand" Text="{Binding Text}" VerticalOptions="Center" TextColor="{Binding TextColor}"></Label>
+    </StackLayout>
+</ViewCell>
