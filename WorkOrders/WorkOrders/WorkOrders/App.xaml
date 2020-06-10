@@ -14,6 +14,8 @@
                TargetType="Frame">
             <Setter Property="Padding"
                     Value="0" />
+            <Setter Property="CornerRadius"
+                    Value="0" />
             <Setter Property="HasShadow"
                     Value="False" />
         </Style>
@@ -26,6 +28,8 @@
                     Value="8" />
             <Setter Property="HasShadow"
                     Value="False" />
+            <Setter Property="Padding"
+                    Value="5" />
         </Style>
 
         <Style TargetType="Span">

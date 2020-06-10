@@ -16,7 +16,7 @@
                     <Frame BackgroundColor="{Binding OrderStatus, Converter={StaticResource StatusToColorConverter}}" Style="{StaticResource OuterFrame}">
                         <Frame Style="{StaticResource InnerFrame}">
                             <StackLayout>
-                                <StackLayout Orientation="Horizontal" >
+                                <StackLayout>
                                     <Label>
                                         <Label.FormattedText>
                                             <FormattedString>
